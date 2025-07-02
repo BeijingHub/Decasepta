@@ -4,7 +4,7 @@ import math
 
 # Initialize
 pygame.init()
-WIDTH, HEIGHT = 800, 400
+WIDTH, HEIGHT = 800, 401
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 FPS = 60
