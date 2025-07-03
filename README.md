@@ -64,42 +64,7 @@ while run:
     win.fill(WHITE)
     clock.tick(FPS)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-
-    # Input: One-button speed control
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_SPACE]:
-        speed = min(speed + acceleration, max_speed)
-    else:
-        speed = max(speed - acceleration * 1.5, 2)
-
-    # Move terrain left
-    for i in range(len(ground_points)):
-        x, y = ground_points[i]
-        ground_points[i] = (x - speed, y)
-    while ground_points and ground_points[0][0] < -100:
-        ground_points.pop(0)
-
-    generate_terrain()
-    draw_ground()
-
-    # Apply gravity
-    ground_under = get_ground_height_at(player.x)
-    if player.bottom < ground_under:
-        velocity_y += gravity
-        player.y += velocity_y
-        on_ground = False
-    else:
-        player.bottom = ground_under
-        velocity_y = 0
-        on_ground = True
-
-    # Draw player
-    pygame.draw.rect(win, (255, 0, 0), player)
-
-    # === START: Chaser Logic with Score Steal ===
+    
 chaser_x += 1.0
 if chaser_x >= player.x:
     print("Chaser stole your score!")
